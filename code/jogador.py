@@ -19,7 +19,7 @@ class donkey:
     def aparecer(self,tela):
         tela.blit(self.imagem,(self.posição_x,self.posição_y))
     
-    def movimento(self,cima,baixo,direita,esquerda,utl): 
+    def movimento(self,direita,esquerda): 
         keys = pygame.key.get_pressed()
 
         #Atualizando a posição do carrinho para direita
