@@ -32,7 +32,6 @@ while running:
     tela.blit(pontuação,(0,2))
     #Colocar as imagens na screen
     tela.blit(background,(0,0))
-    tela.blit(player,(0,0))
     # Atualizando a tela
     pygame.display.update()
     # Colocando o FPS
