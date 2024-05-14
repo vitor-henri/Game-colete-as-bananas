@@ -24,8 +24,8 @@ class donkey:
         #Atualizando a posição do carrinho para direita
         if keys[direita]:
             if self.posição_x < 700:
-                self.posição_x+=3
+                self.posição_x+=8
 
         if keys[esquerda]:
             if self.posição_x > 0:
-                self.posição_x-=3
+                self.posição_x-=8
