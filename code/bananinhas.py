@@ -16,11 +16,10 @@ class bananas:
         self.velocidade = 5
         self.mask = pygame.mask.from_surface(self.imagem)
 
-    def apareca(self, tela):
+    def apareca(self,tela):
         tela.blit(self.imagem,(self.pos_x,self.pos_y))
 
     def movimenta(self):
-        self.pos_x = self.pos_x - self.velocidade
-        if self.pos_x < -200:
-            self.pos_x = 950
-            self.velocidade = random.randint(4,7)
+        self.pos_y += self.velocidade
+        if self.pos_y < 800:
+            self.pos_y = 0
