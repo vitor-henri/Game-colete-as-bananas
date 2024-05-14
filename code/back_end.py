@@ -12,25 +12,19 @@ pygame.display.set_caption("Colete as Bananas🍌")
 tela.fill((0,200,0))
 
 #Imagem de fundo
-background = pygame.image.load("imagens/estrada.png")
+background = pygame.image.load("image/background.png")
 background = pygame.transform.scale(background,(800,500))
 
-# configurando os jogadores na tela
-jogador = jogador_elprimo("Imagens/normal.png",100,100,250,410)
-jogador2 = jogador_elprimo("Imagens/colt.png",100,100,350,410)
+# printando o player
+player = ("image/donkey.png",100,100,250,410)
+
 
 # caralhadas de pontuação
 fonte = pygame.font.SysFont("Comic Sans",16,True,False)
+texto_pontos_elprimo = fonte.render("Pontuação do El Primo: ",True,(255))
+tela.blit(texto_pontos_elprimo,(0,2))
 
-#Criando A BCTINHA DOS OBSTACULOS
-array_carrinhos = [obstaculo("imagens/carro-1.png",120,50,950,50),
-                            obstaculo("imagens/carro-2.png",120,50,950,100),
-                            obstaculo("imagens/carro-3.png",120,50,950,150),
-                            obstaculo("imagens/carro-1.png",120,50,950,200),
-                            obstaculo("imagens/carro-2.png",120,50,950,250),
-                            obstaculo("imagens/carro-3.png",120,50,950,370),]
-
-#configurando o clock pro FPS pro carrinho nao ir rapido
+#configurando o clock pro FPS pras bombinha ir devagar
 clock = pygame.time.Clock()
 
 running = True 
@@ -61,11 +55,6 @@ while running:
             jogador2.posição_x = 350
             jogador2.posição_y = 400              
 
-
-    texto_pontos_elprimo = fonte.render("Pontuação do El Primo: ",True,(255))
-    texto_pontos_colt = fonte.render("Pontuação do Colt: ",True,(0,0,255))
-    tela.blit(texto_pontos_elprimo,(0,2))
-    tela.blit(texto_pontos_colt,(0,20))
     # Atualizando a tela
     pygame.display.update()
     # Colocando o FPS
