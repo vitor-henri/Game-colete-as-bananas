@@ -23,4 +23,4 @@ class bananas:
         self.pos_x = self.pos_x - self.velocidade
         if self.pos_x < -200:
             self.pos_x = 950
-            self.velocidade = random.randint(5,10)
+            self.velocidade = random.randint(4,7)
