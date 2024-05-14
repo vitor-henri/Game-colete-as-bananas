@@ -21,5 +21,5 @@ class bananas:
 
     def movimenta(self):
         self.pos_y += self.velocidade
-        if self.pos_y < 800:
+        if self.pos_y == 800:
             self.pos_y = 0
