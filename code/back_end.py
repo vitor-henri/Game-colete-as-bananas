@@ -18,7 +18,7 @@ background = pygame.image.load("image/background.jpg")
 background = pygame.transform.scale(background,(800,500))
 
 # printando o player
-player = ("image/donkey.png",100,100,250,410)
+player = donkey("image/donkey.png",100,100,250,400)
 
 running = True
 while running:
@@ -26,14 +26,22 @@ while running:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             running = False
+
+    #macaco do krl se mexendo
+    player.movimento(pygame.K_d,pygame.K_a)
+
     # caralhadas de pontuação
     fonte = pygame.font.SysFont("Comic Sans",16,True,False)
     pontuação = fonte.render("Pontuação do El Primo: ",True,(255))
     tela.blit(pontuação,(0,2))
+
     #Colocar as imagens na screen
     tela.blit(background,(0,0))
+    player.aparecer(tela)
+
     # Atualizando a tela
     pygame.display.update()
+
     # Colocando o FPS
     clock.tick(60)
 

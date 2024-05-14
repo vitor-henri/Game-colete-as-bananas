@@ -10,7 +10,6 @@ class donkey:
         self.pos_y = y_inicial
         # proporção da imagem
         self.imagem = pygame.transform.scale(self.imagem,(self.largura,self.altura))
-        self.ultimate = pygame.transform.scale((self.largura,self.altura))
                 # Posição do bonequinho main
         self.posição_x = x_inicial
         self.posição_y = y_inicial
