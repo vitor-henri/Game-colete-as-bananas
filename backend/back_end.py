@@ -1,5 +1,6 @@
 # dev from vito
 import pygame
+import random
 from jogador import *
 from itens import *
 
@@ -27,6 +28,10 @@ background = pygame.transform.scale(background,(800,500))
 player = donkey("image/donkey.png",100,100,250,400)
 
 
+# array objetos caindo
+objetos = []
+
+
 running = True
 while running:
     #começando o eventinho poggers
@@ -35,20 +40,37 @@ while running:
             running = False
     
 
-    #Colocar as imagens na screen
-    tela.blit(background,(0,0))
-    player.aparecer(tela)
-
-
     #macaco do krl se mexendo
     player.movimento(pygame.K_d,pygame.K_a)
-
 
 
     # caralhadas de pontuação
     fonte = pygame.font.SysFont("Comic Sans",30,True,False)
     pontuação = fonte.render(f"Pontuação: ",True,(232, 235, 52))
     tela.blit(pontuação,(0,2))
+
+
+    # randomizar os itens
+    aleatorio = random.randint(0,1)
+
+
+    # itens 
+    if aleatorio == 0:
+            objeto = itens(banana_imagem,0, random.randint(0,800))
+            itens.apareca(tela)
+            itens.movimenta
+        
+
+    if aleatorio == 1:
+            objeto = itens(bomba_imagem,0, random.randint(0,800))
+            objetos.append(objeto)
+            itens.apareca(tela)
+            itens.movimenta
+
+
+    #Colocar as imagens na screen
+    tela.blit(background,(0,0))
+    player.aparecer(tela)
 
 
     # Atualizando a tela

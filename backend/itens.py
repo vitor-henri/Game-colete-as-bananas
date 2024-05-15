@@ -17,13 +17,13 @@ class itens:
         if self.pos_y == 800:
             self.pos_y = 0
     
+
     def apareca(self,tela):
-        tela.blit(self.imagem)
+        tela.blit(self.imagem,)
 
 # imagens sendo carregadas
-banana_imagem = pygame.image.load("image/banana.png",50,50,0,50)
-bomba_imagem = pygame.image.load("image/bomba.png",50,50,0,100)
+banana_imagem = pygame.image.load("image/banana.png")
+bomba_imagem = pygame.image.load("image/bomba.png")
 
-# array objetos caindo
-objetos = []
+
 
