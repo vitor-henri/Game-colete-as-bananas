@@ -1,8 +1,8 @@
 # dev from vito
 import pygame
-from back_end import *
 from bananinhas import *
 from jogador import *
+from bombinhas import * 
 #inicia o pygame 
 pygame.init()
 
