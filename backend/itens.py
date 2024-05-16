@@ -19,7 +19,7 @@ class itens:
     
 
     def apareca(self,tela):
-        tela.blit(self.imagem,)
+        tela.blit(self.imagem,tela)
 
 # imagens sendo carregadas
 banana_imagem = pygame.image.load("image/banana.png")

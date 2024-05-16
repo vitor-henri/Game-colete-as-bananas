@@ -25,7 +25,7 @@ background = pygame.transform.scale(background,(800,500))
 
 
 # configurando a posição e o tamanho do donkey
-player = donkey("image/donkey.png",100,100,250,400)
+player = donkey("image/donkey.png",100,100,250,395)
 
 
 # array objetos caindo
@@ -58,14 +58,13 @@ while running:
     if aleatorio == 0:
             objeto = itens(banana_imagem,0, random.randint(0,800))
             itens.apareca(tela)
-            itens.movimenta
-        
+            itens.movimenta()
 
     if aleatorio == 1:
             objeto = itens(bomba_imagem,0, random.randint(0,800))
             objetos.append(objeto)
             itens.apareca(tela)
-            itens.movimenta
+            itens.movimenta()
 
 
     #Colocar as imagens na screen
