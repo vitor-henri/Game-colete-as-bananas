@@ -29,7 +29,7 @@ player = donkey("image/donkey.png",100,100,250,395)
 
 
 # array objetos caindo
-objetos = []
+objetos = [Item(),Item(),Item(),Item(),Item(),Item(),Item(),Item()]
 
 
 running = True
@@ -42,6 +42,7 @@ while running:
 
     #macaco do krl se mexendo
     player.movimento(pygame.K_d,pygame.K_a)
+    tela.blit(background,(0,0))
 
 
     # caralhadas de pontuação
@@ -50,25 +51,13 @@ while running:
     tela.blit(pontuação,(0,2))
 
 
-    # randomizar os itens
-    aleatorio = random.randint(0,1)
-
-
-    # itens 
-    if aleatorio == 0:
-            objeto = itens(banana_imagem,0, random.randint(0,800))
-            itens.apareca(tela)
-            itens.movimenta()
-
-    if aleatorio == 1:
-            objeto = itens(bomba_imagem,0, random.randint(0,800))
-            objetos.append(objeto)
-            itens.apareca(tela)
-            itens.movimenta()
+    #Aparecer os itens
+    for objeto in objetos:
+        objeto.apareca(tela)
+        objeto.movimenta()
 
 
     #Colocar as imagens na screen
-    tela.blit(background,(0,0))
     player.aparecer(tela)
 
 
