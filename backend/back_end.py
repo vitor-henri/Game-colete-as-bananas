@@ -29,17 +29,25 @@ player = donkey("image/donkey.png",100,100,250,395)
 
 #SOUND EFFECTS
 
-pygame.mixer.music.load("sounds/ost.mp3")
+pygame.mixer.music.load("sounds/soundtrack.mp3")
 pygame.mixer.music.set_endevent(pygame.USEREVENT)
 pygame.mixer.music.play()
 
 
-point_up = pygame.mixer.Sound("sounds/good_sound.mp3")
+point_up = pygame.mixer.Sound("sound/bom.mp3")
 
-point_down = pygame.mixer.Sound("sounds/bad_sound.mp3")
+point_down = pygame.mixer.Sound("sound/ruim.mp3")
 
-power_sound = pygame.mixer.Sound("sounds/power_sound.mp3")
+power_sound = pygame.mixer.Sound("sound/power_sound.mp3")
 
+#Obstáculos
+obstaculos = []
+
+#Pra tirar o bug chato 
+poder_ativo = False
+
+#contagem de itens ruins que ele pegou
+itens_ruins = 0
 
 running = True
 while running:
@@ -47,7 +55,7 @@ while running:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             running = False
-    
+
 
     #macaco do krl se mexendo
     player.movimento(pygame.K_d,pygame.K_a)
@@ -59,11 +67,19 @@ while running:
     pontuação = fonte.render(f"Pontuação: ",True,(232, 235, 52))
     tela.blit(pontuação,(0,2))
 
+    #OBSTACULOS
+    if len(obstaculos) <= 7:
+        novo_obstaculo = Obstaculo()  # Cria um novo obstáculo
+        obstaculos.append(novo_obstaculo)  # Adiciona na lista de obstáculos
+    for obstaculokk in obstaculos:
+        if obstaculokk.pos_y > 600:
+            obstaculos.remove(obstaculokk)
+    
 
-    #Aparecer os itens
-    for objeto in objetos:
-        objeto.apareca(tela)
-        objeto.movimenta()
+    # COLOCA OS OBSTACULOS NA TELA E CHECKA A COLISAO
+    for obstaculo in obstaculos:
+        obstaculo.load(tela)
+        obstaculo.movimenta()
 
 
     #Colocar as imagens na screen
