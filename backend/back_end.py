@@ -27,7 +27,7 @@ background = pygame.transform.scale(background,(800,500))
 # configurando a posição e o tamanho do donkey
 player = donkey("image/donkey.png",100,100,250,395)
 
-#SOUND EFFECTS
+#SOUNDS
 
 pygame.mixer.music.load("sounds/soundtrack.mp3")
 pygame.mixer.music.set_endevent(pygame.USEREVENT)
@@ -69,7 +69,7 @@ while running:
 
     #OBSTACULOS
     if len(obstaculos) <= 7:
-        novo_obstaculo = Obstaculo()  # Cria um novo obstáculo
+        novo_obstaculo = Item()  # Cria um novo obstáculo
         obstaculos.append(novo_obstaculo)  # Adiciona na lista de obstáculos
     for obstaculokk in obstaculos:
         if obstaculokk.pos_y > 600:

@@ -4,30 +4,39 @@ import random
 
 
 class Item:
-    
     def __init__(self):
-        self.reset()
-    
-    def movimenta(self):
-        self.pos_y += self.velocidade
-        if self.pos_y == 800:
-            self.pos_y = 0
-    
 
-    def apareca(self,tela):
-        tela.blit(self.imagem,(self.pos_x,self.pos_y))
-    
-    def reset(self):
-        aleatorio = random.randint(0,1)
-        if aleatorio == 0:
-            self.imagem = pygame.image.load("image/banana.png")
+        self.banana = 0
+
+        self.bomba = 0
+        
+        if random.randint(0,1) == 0:
+
+            self.img = pygame.image.load("image/banana.png")
+
+            self.banana = 1
+
+
         else:
-            self.imagem = pygame.image.load("image/bomba.png")
-        self.imagem = pygame.transform.scale(self.imagem, (70, 70))
-        self.altura = -self.imagem.get_height()
-        self.largura = -self.imagem.get_width()
-        self.pos_x = random.randint(0,800-70)
-        self.pos_y = -self.altura
-        self.velocidade = random.randint(0,5)
-        self.mask = pygame.mask.from_surface(self.imagem)
+
+            self.img = pygame.image.load("image/bomba.png")
+
+            self.bomba = 1
+
+
+        self.img = pygame.transform.scale(self.img,(75,75))
+        self.mascara = pygame.mask.from_surface(self.img)
+
+        self.pos_x = random.randint(0,725)
+        self.pos_y = -100
+        
+        self.speed = random.randint(3,5)
+
+        
+    def load(self, tela):
+        tela.blit(self.img,(self.pos_x,self.pos_y))
+
+    #Movimento random
+    def movimenta(self):
+        self.pos_y +=self.speed
 
