@@ -27,9 +27,18 @@ background = pygame.transform.scale(background,(800,500))
 # configurando a posição e o tamanho do donkey
 player = donkey("image/donkey.png",100,100,250,395)
 
+#SOUND EFFECTS
 
-# array objetos caindo
-objetos = [Item(),Item(),Item(),Item(),Item(),Item(),Item(),Item()]
+pygame.mixer.music.load("sounds/ost.mp3")
+pygame.mixer.music.set_endevent(pygame.USEREVENT)
+pygame.mixer.music.play()
+
+
+point_up = pygame.mixer.Sound("sounds/good_sound.mp3")
+
+point_down = pygame.mixer.Sound("sounds/bad_sound.mp3")
+
+power_sound = pygame.mixer.Sound("sounds/power_sound.mp3")
 
 
 running = True
