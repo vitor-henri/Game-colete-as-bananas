@@ -4,7 +4,7 @@ import random
 
 
 class Item:
-    def __init__(self):
+    def __init__(self): 
 
         self.banana = 0
 

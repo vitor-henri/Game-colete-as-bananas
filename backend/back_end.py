@@ -25,7 +25,7 @@ background = pygame.transform.scale(background,(800,500))
 
 
 # configurando a posição e o tamanho do donkey
-player = donkey("image/donkey.png",100,100,250,395)
+jogador = donkey("image/donkey.png",100,100,250,395)
 
 
 #SOUNDS
@@ -55,54 +55,53 @@ itens_ruins = 0
 # pontuação 2
 pontos = 0
 
-
 running = True
 while running:
-    #começando o eventinho poggers
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             running = False
 
         elif evento.type == pygame.KEYDOWN:
-            if evento.key == pygame.K_e and player.power > 0 and not poder_ativo:
-                player.power -= 1
+            if evento.key == pygame.K_e and jogador.power > 0 and not poder_ativo:
+                jogador.power -= 1
                 ultimate.play()
                 obstaculos.clear()
                 poder_ativo = True
 
         elif evento.type == pygame.KEYUP:
             if evento.key == pygame.K_e:
-                poder_ativo = False
+                poder_ativado = False
 
     #Spawna os sprites e seus movimentos
     tela.blit(background,(0,0))
 
-    # caralhadas de pontuação
-    fonte = pygame.font.SysFont("Comic Sans",30,True,False)
-    pontuação = fonte.render(f"Pontuação: ",True,(232, 235, 52))
-    tela.blit(pontuação,(0,2))
+    #PONTUAÇÃO
+    font = pygame.font.SysFont("Comic Sans MS",30, True, False)
+    pontuação = font.render(f"Poder de Luta: {pontos}",True,(232, 235, 52))
+    tela.blit(pontuação,(0,4))
+
+    #PLAYER 1 CONFIG
+    jogador.print_char(tela)
+    jogador.movements(pygame.K_a, pygame.K_d)
 
 
-    #macaco do krl 
-    player.aparecer(tela)
-    player.movimento(pygame.K_d,pygame.K_a)
 
-
-    #obstaculos
+    #OBSTACULOS
     if len(obstaculos) <= 7:
         novo_obstaculo = Item()  # Cria um novo obstáculo
         obstaculos.append(novo_obstaculo)  # Adiciona na lista de obstáculos
     for obstaculokk in obstaculos:
-        if obstaculokk.pos_y > 00:
+        if obstaculokk.pos_y > 600:
             obstaculos.remove(obstaculokk)
     
 
-    # COLOCA OS OBSTACULOS NA TELA E VERIFICA AS HITBOXES
+    # COLOCA OS OBSTACULOS NA TELA E CHECKA A COLISAO
     for obstaculo in obstaculos:
         obstaculo.load(tela)
         obstaculo.movimenta()
-        rel_pos = (obstaculo.pos_x - player.pos_x, obstaculo.pos_y - player.pos_y)
-        if player.mascara.overlap(obstaculo.mascara, rel_pos):
+
+        rel_pos = (obstaculo.pos_x - jogador.pos_x, obstaculo.pos_y - jogador.pos_y)
+        if jogador.mascara.overlap(obstaculo.mascara, rel_pos):
 
             if obstaculo.banana == 1:
                 pontos += 100
@@ -119,10 +118,6 @@ while running:
             obstaculos.remove(obstaculo)
 
 
-    # Atualizando a tela
     pygame.display.update()
 
-
-    # Colocando o FPS
     clock.tick(60)
-
