@@ -14,6 +14,7 @@ class donkey:
         self.posição_x = x_inicial
         self.posição_y = y_inicial
         self.mask = pygame.mask.from_surface(self.imagem)
+        self.power = 3
 
     def aparecer(self,tela):
         tela.blit(self.imagem,(self.posição_x,self.posição_y))

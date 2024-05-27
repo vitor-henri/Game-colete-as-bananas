@@ -29,7 +29,7 @@ player = donkey("image/donkey.png",100,100,250,395)
 
 #SOUNDS
 
-pygame.mixer.music.load("sounds/soundtrack.mp3")
+pygame.mixer.music.load("sound/soundtrack.mp3")
 pygame.mixer.music.set_endevent(pygame.USEREVENT)
 pygame.mixer.music.play()
 
@@ -38,7 +38,7 @@ point_up = pygame.mixer.Sound("sound/bom.mp3")
 
 point_down = pygame.mixer.Sound("sound/ruim.mp3")
 
-power_sound = pygame.mixer.Sound("sound/power_sound.mp3")
+ultimate = pygame.mixer.Sound("sound/ult.mp3")
 
 #Obstáculos
 obstaculos = []
@@ -55,6 +55,17 @@ while running:
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
             running = False
+
+        elif evento.type == pygame.KEYDOWN:
+            if evento.key == pygame.K_e and player.power > 0 and not poder_ativo:
+                player.power -= 1
+                ultimate.play()
+                obstaculos.clear()
+                poder_ativado = True
+
+        elif evento.type == pygame.KEYUP:
+            if evento.key == pygame.K_e:
+                poder_ativado = False
 
 
     #macaco do krl se mexendo
