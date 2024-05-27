@@ -27,6 +27,7 @@ background = pygame.transform.scale(background,(800,500))
 # configurando a posição e o tamanho do donkey
 player = donkey("image/donkey.png",100,100,250,395)
 
+
 #SOUNDS
 
 pygame.mixer.music.load("sound/soundtrack.mp3")
@@ -40,14 +41,20 @@ point_down = pygame.mixer.Sound("sound/ruim.mp3")
 
 ultimate = pygame.mixer.Sound("sound/ult.mp3")
 
+
 #Obstáculos
 obstaculos = []
+
 
 #Pra tirar o bug chato 
 poder_ativo = False
 
+
 #contagem de itens ruins que ele pegou
 itens_ruins = 0
+# pontuação 2
+pontos = 0
+
 
 running = True
 while running:
@@ -61,24 +68,27 @@ while running:
                 player.power -= 1
                 ultimate.play()
                 obstaculos.clear()
-                poder_ativado = True
+                poder_ativo = True
 
         elif evento.type == pygame.KEYUP:
             if evento.key == pygame.K_e:
-                poder_ativado = False
+                poder_ativo = False
 
-
-    #macaco do krl se mexendo
-    player.movimento(pygame.K_d,pygame.K_a)
+    #Spawna os sprites e seus movimentos
     tela.blit(background,(0,0))
-
 
     # caralhadas de pontuação
     fonte = pygame.font.SysFont("Comic Sans",30,True,False)
     pontuação = fonte.render(f"Pontuação: ",True,(232, 235, 52))
     tela.blit(pontuação,(0,2))
 
-    #OBSTACULOS
+
+    #macaco do krl 
+    player.aparecer(tela)
+    player.movimento(pygame.K_d,pygame.K_a)
+
+
+    #obstaculos
     if len(obstaculos) <= 7:
         novo_obstaculo = Item()  # Cria um novo obstáculo
         obstaculos.append(novo_obstaculo)  # Adiciona na lista de obstáculos
@@ -87,14 +97,26 @@ while running:
             obstaculos.remove(obstaculokk)
     
 
-    # COLOCA OS OBSTACULOS NA TELA E CHECKA A COLISAO
+    # COLOCA OS OBSTACULOS NA TELA E VERIFICA AS HITBOXES
     for obstaculo in obstaculos:
         obstaculo.load(tela)
         obstaculo.movimenta()
+        rel_pos = (obstaculo.pos_x - player.pos_x, obstaculo.pos_y - player.pos_y)
+        if player.mascara.overlap(obstaculo.mascara, rel_pos):
 
+            if obstaculo.banana == 1:
+                pontos += 100
+                point_up.play()
 
-    #Colocar as imagens na screen
-    player.aparecer(tela)
+            else:
+                pontos -= 100
+                itens_ruins +=1
+                if itens_ruins >=3:
+                    rodando = False
+                if pontos < 0:
+                    pontos = 0
+                point_down.play()
+            obstaculos.remove(obstaculo)
 
 
     # Atualizando a tela

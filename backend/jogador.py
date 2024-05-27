@@ -13,7 +13,7 @@ class donkey:
                 # Posição do bonequinho main
         self.posição_x = x_inicial
         self.posição_y = y_inicial
-        self.mask = pygame.mask.from_surface(self.imagem)
+        self.mascara = pygame.mask.from_surface(self.imagem)
         self.power = 3
 
     def aparecer(self,tela):
