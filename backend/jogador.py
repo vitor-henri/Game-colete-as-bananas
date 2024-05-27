@@ -2,31 +2,35 @@ import pygame
 
 class donkey:
 
-    def __init__(self,arquivo_imagem,altura_imagem,largura_imagem,x_inicial,y_inicial):
-        self.imagem = pygame.image.load(arquivo_imagem)
-        self.altura = altura_imagem
-        self.largura = largura_imagem
-        self.pos_x = x_inicial
-        self.pos_y = y_inicial
-        # proporção da imagem
-        self.imagem = pygame.transform.scale(self.imagem,(self.largura,self.altura))
-                # Posição do bonequinho main
-        self.posição_x = x_inicial
-        self.posição_y = y_inicial
+    #Atributos do persona
+    def __init__(self,img, img_x,img_y, pos_x, pos_y ):
+        self.imagem = pygame.image.load(img)
+
+        self.width = img_x
+        self.height = img_y
+
+        self.imagem = pygame.transform.scale(self.imagem,(self.width,self.height))
+
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+
         self.mascara = pygame.mask.from_surface(self.imagem)
+
         self.power = 3
 
-    def aparecer(self,tela):
-        tela.blit(self.imagem,(self.posição_x,self.posição_y))
+    #printando na tela
+    def print_char(self, screen):
+        screen.blit(self.imagem,(self.pos_x,self.pos_y))
     
-    def movimento(self,direita,esquerda): 
+    #moviment
+    def movements(self, left_key, right_key):
         keys = pygame.key.get_pressed()
 
-        #Atualizando a posição do carrinho para direita
-        if keys[direita]:
-            if self.posição_x < 700:
-                self.posição_x+=8
-
-        if keys[esquerda]:
-            if self.posição_x > 0:
-                self.posição_x-=8
+        #teclas
+        if keys[left_key]:
+            if self.pos_x > 0:
+                self.pos_x = self.pos_x - 5
+        
+        if keys[right_key]:
+            if self.pos_x < 800 - self.width:
+                self.pos_x = self.pos_x + 5

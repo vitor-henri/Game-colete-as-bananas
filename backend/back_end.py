@@ -93,7 +93,7 @@ while running:
         novo_obstaculo = Item()  # Cria um novo obstáculo
         obstaculos.append(novo_obstaculo)  # Adiciona na lista de obstáculos
     for obstaculokk in obstaculos:
-        if obstaculokk.pos_y > 600:
+        if obstaculokk.pos_y > 00:
             obstaculos.remove(obstaculokk)
     
 
