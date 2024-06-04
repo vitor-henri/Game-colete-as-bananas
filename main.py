@@ -77,7 +77,7 @@ while running:
 
     #PONTUAÇÃO
     font = pygame.font.SysFont("Comic Sans MS",30, True, False)
-    pontuação = font.render(f"Poder de Luta: {pontos}",True,(232, 235, 52))
+    pontuação = font.render(f"Bananas: {pontos}",True,(232, 235, 52))
     tela.blit(pontuação,(0,4))
 
     #PLAYER 1 CONFIG
@@ -104,7 +104,7 @@ while running:
         if jogador.mascara.overlap(obstaculo.mascara, rel_pos):
 
             if obstaculo.banana == 1:
-                pontos += 100
+                pontos += 1
                 point_up.play()
 
             else:
@@ -117,3 +117,4 @@ while running:
     pygame.display.update()
 
     clock.tick(60)
+print(f"Sua pontuação foi de {pontos}")

@@ -29,8 +29,8 @@ class donkey:
         #teclas
         if keys[left_key]:
             if self.pos_x > 0:
-                self.pos_x = self.pos_x - 5
+                self.pos_x = self.pos_x - 6
         
         if keys[right_key]:
             if self.pos_x < 800 - self.width:
-                self.pos_x = self.pos_x + 5
+                self.pos_x = self.pos_x + 6
