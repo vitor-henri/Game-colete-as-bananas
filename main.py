@@ -1,4 +1,4 @@
-# dev from vito
+# dev from vitor
 import pygame
 import random
 from backend.jogador import *
